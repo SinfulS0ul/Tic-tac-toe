@@ -1,0 +1,40 @@
+<div class="login-container">
+  <h1 *ngIf="authService.user | async">Welcome {{ (authService.user | async)?.email }}!</h1>
+  <div *ngIf="!(authService.user | async)">
+    <h2>Login</h2>
+    <form (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm">
+      <div class="form-group">
+      <input type="text"
+            [(ngModel)]="newEmail.email" 
+            #email="ngModel"
+            name="email"
+            placeholder="Email"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': f.submitted && email.invalid }"
+            #email="ngModel"
+            required email
+      >
+      <div *ngIf="email.invalid" class="invalid-feedback">
+          <div *ngIf="email.errors.email">Email must be a valid email address</div>
+      </div>
+    </div>
+      <input type="password" 
+            [(ngModel)]="password" 
+            name="password"
+            placeholder="Password"
+            class="form-control"
+      >
+      <button class="btn btn-primary"
+              [disabled]="!email || !password"
+              type="submit"
+      >
+        Login
+      </button>
+    </form>
+    <button class="btn btn-primary" 
+            (click)="googleLogin()"
+    >
+      Login with Google
+    </button>
+  </div>
+</div>

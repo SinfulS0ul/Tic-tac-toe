@@ -1,0 +1,38 @@
+<header>
+  <nav>
+    <div class="nav-wrapper">
+      <label href="#" class="brand-logo center">Tic-Tac-Toe Game</label>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a routerLink="/"
+               routerLinkActive="active"
+               [routerLinkActiveOptions]="{exact: true}"
+            >Game</a></li>
+        <li><a routerLink="signup/" 
+               routerLinkActive="active"
+               [routerLinkActiveOptions]="{exact:true}"
+            >Signup</a></li>
+        <li><a routerLink="login/" 
+               routerLinkActive="active"
+               [routerLinkActiveOptions]="{exact: true}"
+            >Login</a></li>
+        <li><a (click) = "logout()">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+</main>
+
+
+<footer class="page-footer">
+    <div class="footer-copyright">
+      <div class="container footer-title">
+        Tic-Tac-Toe Game
+        <a class="my-name right grey-text text-lighten-4" href="">Maksym Pasichnyk</a>
+      </div>
+    </div>
+</footer>
