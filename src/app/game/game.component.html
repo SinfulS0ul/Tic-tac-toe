@@ -3,7 +3,7 @@
     <div class="col-md-8">
       <div class="game-area">
         <mat-grid-list class="tick-tack-grid" cols="3">
-          <mat-grid-tile *ngFor="let block of gs.blocks; let i = index; trackBy: trackByFn" (click)="playerClick(i)"><i
+          <mat-grid-tile *ngFor="let block of gs.blocks; let i = index;" (click)="playerClick(i)"><i
               [class]="block.symbol == 'done' ? 'material-icons tick' : 'material-icons cross'">{{ block.symbol }}</i></mat-grid-tile>
         </mat-grid-list>
       </div>
