@@ -1,0 +1,37 @@
+language: node_js
+node_js:
+  - "9"
+
+dist: trusty
+
+sudo: false
+
+branches:
+  only:
+  - master
+
+env:
+  global:
+    secure: "qlm91Kd/+ylnLb7uf3mqvEiidnWHVvyo8b37KqYfTfOMiqxb5OUTW8uxv7UZy9ZnWevmRKRjvpDd2sMT35kwfVZiXOw7/a7AX5g9LhAcqmhE1xkvK6lEU32klBohzo3APsAPMG0TAn+NAakJ+37RR8pqSYaFN3AxFtAPy7bvKrRmojqeoWNghGYKn4I1QWed7iRTr3NgJrKTyadqvsNQnVTD5LVPKeH7WVHCTRk9E2dqYBMrOPMAHr2KuEymLVCEixNE7PG8woeeWF8tIvAJBhRK9FvMmh3igA+eJoe0I3lcnh/OlaedmQQUDf3ZZuxAh0clE66NgLm21frfbo1SMnD/JwlIkdUw+4cl7WjWk10i4eqbshF4RZTD7ZeMJAaFchoORmMDpzOCuq2iv2FKtTMlq4MQCyms5Ou8T6BEpkOimKHNp7YGso4L8lcJIY/ECQTVgQSNIhbmZP8fq1rWpCIOLkZxnmf/cy3nG5uIY90UttbHTodx3oYj1OLry/fO8WEfNnjji86wgr2oGyWrvoL0s3IY25JKVLu1cUG+mi4f3RVDMIwj1LYzAAcVneYWzH5NvwQrPBrSYBOVV/uo5mAv3tRqExj9b+YEF2JqcWmR8TbP+PjdSyc394Z62Cssv/kZpID/OeOppDKGkPID88nAfjA8Q4VaUHiQlyF0x7o="
+
+before_install:
+  - composer config --global github-oauth.github.com "$GITHUB_TOKEN"
+  
+install:
+  - npm i
+
+cache:
+  directories:
+  - node_modules
+
+script:
+  - npm run build
+  
+deploy:
+  provider: pages
+  keep-history: true
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  local_dir: dist/tic-tac-toe
+  on:
+    branch: master
